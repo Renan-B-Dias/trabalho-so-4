@@ -12,7 +12,7 @@ public class MainMemory {
     }
 
     public void put(Frame frame) {
-
+        System.out.println("In memory!!");
     }
 
     public void remove(Frame frame) {
