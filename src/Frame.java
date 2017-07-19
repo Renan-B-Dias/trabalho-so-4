@@ -3,14 +3,12 @@
  */
 public class Frame {
 
-    private static int idCount = 0;
-
     protected int id;
     protected boolean valid;
 //    protected byte reference;
 
-    public Frame() {
-        this.id = idCount++;
+    public Frame(int id) {
+        this.id = id;
         this.valid = false;
 //        this.reference =
     }

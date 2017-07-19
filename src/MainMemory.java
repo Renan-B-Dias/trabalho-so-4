@@ -3,7 +3,7 @@
  */
 public class MainMemory {
 
-    private static int pointer = 0;
+    private int fifoPointer = 0;
 
     private Frame[] mainMemory;
 
@@ -12,7 +12,24 @@ public class MainMemory {
     }
 
     public void put(Frame frame) {
-        System.out.println("In memory!!");
+        System.out.println("Putting in memory");
+
+        if(mainMemory[fifoPointer] != null) {
+            // Swap
+            mainMemory[fifoPointer].valid = false;
+            mainMemory[fifoPointer] = frame;
+            fifoPointer++;
+        } else {
+            // Just put
+            mainMemory[fifoPointer] = frame;
+            fifoPointer++;
+        }
+
+    }
+
+    private void checkPointer() {
+        if(fifoPointer >= mainMemory.length)
+            fifoPointer = 0;
     }
 
     public void remove(Frame frame) {
@@ -23,9 +40,11 @@ public class MainMemory {
 
     }
 
-    public boolean inMemory(Frame frame) {
-
-        return false;
+    public void printMainMemory() {
+        for(Frame x: mainMemory)
+            if(x != null)
+                System.out.printf(" %d %b | ", x.id, x.valid);
+        System.out.println();
     }
 
 }

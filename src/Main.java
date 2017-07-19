@@ -17,12 +17,14 @@ public class Main {
         MyProcess p1 = new MyProcess(1, 6);
         MyProcess p2 = new MyProcess(2, 7);
 
-        try {
-            p0.useFrame(1);
-            p0.useFrame(1);
-        } catch(RuntimeException e) {
-            System.out.println(e.getMessage());
-        }
+        p0.useFrame(0);     // Putting Frame 1 from Proc 0
+        p0.useFrame(0);     // Putting Frame 1 from Proc 0
+        p0.useFrame(1);     // Putting Frame 0 from Proc 0
+        p0.useFrame(0);     // Putting Frame 1 from Proc 0
+        p1.useFrame(1);     // Putting Frame 1 from Proc 1
+        p2.useFrame(2);     // Putting Frame 2 from Proc 2
+
+        memory.printMainMemory();
 
     }
 

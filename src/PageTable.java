@@ -8,7 +8,7 @@ public class PageTable {
     public PageTable(int pagesProc) {
         frames = new Frame[pagesProc];
         for(int i = 0; i < frames.length; i++)
-            frames[i] = new Frame();
+            frames[i] = new Frame(i);
     }
 
     public int inMemory(int id) {

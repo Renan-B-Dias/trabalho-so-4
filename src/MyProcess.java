@@ -16,18 +16,20 @@ public class MyProcess {
         pageTable = new PageTable(pagesProc);
     }
 
-    public void useFrame(int id) throws RuntimeException {
+    public void useFrame(int id) {
         if(invalid(id))
-            throw new RuntimeException("Wrong id");
+            System.out.println("Wrong id");
+        else {
 
-        int pageIndex = pageTable.inMemory(id);
+            int pageIndex = pageTable.inMemory(id);
 
-        if(pageIndex > 0)
-            throw new RuntimeException("Already in memory");
-
-        if(pageIndex < 0) { // bit is false
-            memory.put(pageTable.getFrame(id));
-            pageTable.setBit(id, true);
+            if (pageIndex >= 0)
+                System.out.println("Already in memory");
+            else {
+                // bit is false
+                memory.put(pageTable.getFrame(id));
+                pageTable.setBit(id, true);
+            }
         }
     }
 
