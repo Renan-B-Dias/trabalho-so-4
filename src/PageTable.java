@@ -20,7 +20,15 @@ public class PageTable {
                     return i;
                 else
                     return -1;
-        return -1; // Never should happen!!!
+        return -1; // Wll never happen!!!
+    }
+
+    public Frame getByIndex(int index) {
+        try {
+            return frames[index];
+        } catch(Exception e) {
+            return null;
+        }
     }
 
     public Frame getFrame(int id) {

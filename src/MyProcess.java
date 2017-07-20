@@ -11,7 +11,7 @@ public class MyProcess {
 
     public MyProcess(int id, int pagesProc) throws RuntimeException {
         if(invalid(id))
-            throw new RuntimeException("Id inválido");
+            throw new RuntimeException("Id invalido");
         this.id = id;
         pageTable = new PageTable(pagesProc, this);
     }
@@ -23,8 +23,16 @@ public class MyProcess {
 
             int pageIndex = pageTable.inMemory(id);
 
-            if (pageIndex >= 0)
-                System.out.println("Already in memory");
+            if (pageIndex >= 0) {
+                Frame frame = pageTable.getByIndex(pageIndex);
+                int memoryIndex = memory.getIndex(frame);
+
+                if(memoryIndex < 0) {
+                    System.out.println("Fatal error!!!");
+                    System.exit(1);
+                }
+                System.out.printf("Referencia %d.%d: pagina no quadro %d e referida\n", this.id, frame.id, memoryIndex);
+            }
             else {
                 // bit is false
                 memory.put(pageTable.getFrame(id));

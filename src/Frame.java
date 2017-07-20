@@ -19,5 +19,4 @@ public class Frame {
     public String toString() {
         return "Id: " + id + " validBit: " + valid;
     }
-
 }
