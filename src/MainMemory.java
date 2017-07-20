@@ -12,9 +12,12 @@ public class MainMemory {
     }
 
     public void put(Frame frame) {
-        System.out.println("Putting in memory");
+
+
+        checkPointer();
 
         if(mainMemory[fifoPointer] != null) {
+            System.out.println("Frame is used");
             // Swap
             mainMemory[fifoPointer].valid = false;
             mainMemory[fifoPointer] = frame;
@@ -24,7 +27,7 @@ public class MainMemory {
             mainMemory[fifoPointer] = frame;
             fifoPointer++;
         }
-
+        System.out.println("Putting in memory");
     }
 
     private void checkPointer() {
@@ -43,7 +46,7 @@ public class MainMemory {
     public void printMainMemory() {
         for(Frame x: mainMemory)
             if(x != null)
-                System.out.printf(" %d %b | ", x.id, x.valid);
+                System.out.printf("Proc: %d frame: %d valid: %b | ", x.process.id, x.id, x.valid);
         System.out.println();
     }
 

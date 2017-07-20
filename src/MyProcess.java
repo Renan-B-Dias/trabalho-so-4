@@ -13,7 +13,7 @@ public class MyProcess {
         if(invalid(id))
             throw new RuntimeException("Id inválido");
         this.id = id;
-        pageTable = new PageTable(pagesProc);
+        pageTable = new PageTable(pagesProc, this);
     }
 
     public void useFrame(int id) {
@@ -38,4 +38,9 @@ public class MyProcess {
             return true;
         return false;
     }
+
+    public void printPageTable() {
+        pageTable.printFrameTable();
+    }
+
 }
