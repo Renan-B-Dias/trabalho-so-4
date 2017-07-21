@@ -24,7 +24,7 @@ public class Main {
         p1.useFrame(2);
         p1.useFrame(3);
 
-        // Reduntant
+        // Redundant
         p1.useFrame(0);
         p1.useFrame(1);
         p1.useFrame(2);
@@ -44,7 +44,7 @@ public class Main {
         System.out.println("P2");
         p2.printPageTable();
 
-        System.out.println("Fim da simulacao com a substituicao");
+        System.out.println("Fim da simulacao com a substituicao FIFO");
     }
 
 }
