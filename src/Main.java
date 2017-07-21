@@ -24,16 +24,11 @@ public class Main {
         p1.useFrame(2);
         p1.useFrame(3);
 
-        // Redundant
-        p1.useFrame(0);
-        p1.useFrame(1);
-        p1.useFrame(2);
-        p1.useFrame(3);
-
         p2.useFrame(0);
         p2.useFrame(1);
         p2.useFrame(2);
-//        p2.useFrame(3);
+        p1.useFrame(1);
+        p2.useFrame(3);
 
         memory.printMainMemory();
         System.out.printf("O numero de falhas de pagina foi %d\n", memory.fails);
@@ -45,6 +40,41 @@ public class Main {
         p2.printPageTable();
 
         System.out.println("Fim da simulacao com a substituicao FIFO");
+
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+
+        System.out.println("Inıcio da simulacao com a substituicao Segunda chance");
+
+        SecondMaimMemory second = new SecondMaimMemory(nFrames);
+
+        MyProcess.memory = second;
+
+        p1 = new MyProcess(0, 4);
+        p2 = new MyProcess(1, 4);
+        p3 = new MyProcess(2, 4);
+
+        p1.useFrame(0);
+        p1.useFrame(1);
+        p1.useFrame(2);
+        p1.useFrame(3);
+
+        p2.useFrame(0);
+        p2.useFrame(1);
+        p2.useFrame(2);
+        p1.useFrame(1);
+        p2.useFrame(3);
+
+        second.printMainMemory();
+        System.out.printf("O numero de falhas de pagina foi %d\n", second.fails);
+
+        System.out.println("P1");
+        p1.printPageTable();
+
+        System.out.println("P2");
+        p2.printPageTable();
+
+        System.out.println("Fim da simulacao com a substituicao Segunda chance");
+
     }
 
 }

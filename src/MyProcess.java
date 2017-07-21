@@ -4,7 +4,7 @@
 public class MyProcess {
 
     public static int nProc;    // Quantity of process of simulation
-    public static MainMemory memory;
+    public static Memory memory;
 
     protected int id;
     protected PageTable pageTable;
@@ -32,6 +32,7 @@ public class MyProcess {
                     System.exit(1);
                 }
                 System.out.printf("Referencia %d.%d: pagina no quadro %d e referida\n", this.id, frame.id, memoryIndex);
+                frame.reference = 1;
             }
             else {
                 // bit is false

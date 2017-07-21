@@ -3,7 +3,7 @@ import java.util.Arrays;
 /**
  * Created by yellow-umbrella on 17/07/17.
  */
-public class MainMemory {
+public class MainMemory implements Memory {
 
     private int fifoPointer = 0;
 
@@ -26,7 +26,7 @@ public class MainMemory {
 
             System.out.printf("Referencia %d.%d: no quadro %d saiu a vitima %d.%d e entrou %d.%d\n",
                     frame.process.id, frame.id, fifoPointer,
-                    victim.process.id, victim.process.id,
+                    victim.process.id, victim.id,
                     frame.process.id, frame.id );
         }
         else {
@@ -45,7 +45,7 @@ public class MainMemory {
     public void printMainMemory() {
         for(Frame x: mainMemory)
             if(x != null)
-                System.out.printf("Proc: %d frame: %d valid: %b | ", x.process.id, x.id, x.valid);
+                System.out.printf("%d.%d | ", x.process.id, x.id);
         System.out.println();
     }
 
